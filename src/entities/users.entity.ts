@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { getRounds, hashSync } from "bcryptjs";
+import { Column, Entity, PrimaryGeneratedColumn, DeleteDateColumn, CreateDateColumn, UpdateDateColumn, BeforeInsert, BeforeUpdate } from "typeorm";
 
 @Entity("users")
 export class User {
@@ -14,17 +15,26 @@ export class User {
     @Column({ nullable: false, default: false })
     admin: boolean;
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, length: 120 })
     password: string;
 
-    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-    createdAt: Date;
+    @CreateDateColumn({ type: "date" })
+    createdAt: string;
 
-    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-    uptadedAt: Date;
+    @UpdateDateColumn({ type: "date" })
+    updatedAt: string;
 
-    @Column({ nullable: true })
+    @DeleteDateColumn({ nullable: true })
     deletedAt: Date;
+    @BeforeInsert()
+    @BeforeUpdate()
+    hashPassword() {
+        const hasRounds: number = getRounds(this.password);
+        if (!hasRounds) {
+            this.password = hashSync(this.password, 10);
+        }
+    }
+
 
 }
 

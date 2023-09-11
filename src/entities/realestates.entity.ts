@@ -11,7 +11,7 @@ export class RealEstate {
     sold: boolean;
 
     @Column({ nullable: false, type: "decimal", precision: 10, scale: 2, default: 0 })
-    value: number;
+    value: number | string;
 
     @Column({ nullable: false })
     size: number;

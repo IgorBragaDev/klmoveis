@@ -13,18 +13,13 @@ const login = async (payload: login): Promise<loginReturn> => {
         email: payload.email
     })
 
-    console.log(login)
 
     if (!login) {
         throw new AppError("Invalid credentials", 401)
 
     }
 
-    console.log(login.password)
-    console.log(payload.password)
     const comparePassword: boolean = await compare(payload.password, login.password)
-
-    console.log(comparePassword)
 
     if (!comparePassword) {
         throw new AppError("Invalid credentials", 401)

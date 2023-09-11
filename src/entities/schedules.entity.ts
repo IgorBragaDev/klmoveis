@@ -3,7 +3,7 @@ import Users from "./users.entity";
 import RealStates from "./realestates.entity";
 
 @Entity("schedules")
-export class Schedules {
+export class Schedule {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
@@ -24,6 +24,6 @@ export class Schedules {
 
 }
 
-export default Schedules
+export default Schedule
 
 

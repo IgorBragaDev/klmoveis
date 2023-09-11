@@ -13,7 +13,7 @@ const checkName = async (req: Request, res: Response, next: NextFunction) => {
     })
 
     if (user) {
-        throw new AppError("email already exists")
+        throw new AppError("Email already exists", 409)
     }
 
 
