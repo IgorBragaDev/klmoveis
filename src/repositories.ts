@@ -1,8 +1,10 @@
 import { AppDataSource } from "./data-source";
-import { User } from "./entities";
+import { Address, Category, RealEstate, User } from "./entities";
 
 const usersRep = AppDataSource.getRepository(User)
+const categoryRep = AppDataSource.getRepository(Category)
+const realStateRep = AppDataSource.getRepository(RealEstate)
+const addressRep = AppDataSource.getRepository(Address)
 
 
-
-export { usersRep }
+export { usersRep, categoryRep, realStateRep,addressRep }
