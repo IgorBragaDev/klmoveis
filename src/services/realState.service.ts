@@ -11,7 +11,7 @@ const create = async (payload: any) => {
         number: address.number
     })
     if (checkAdress) {
-        throw new AppError("Ja tem aqui", 409)
+        throw new AppError("Address already exists", 409)
     }
     const createAddress = addressRep.create(payload.address)
     const saveAddress = await addressRep.save(createAddress)
@@ -27,6 +27,13 @@ const create = async (payload: any) => {
 
 }
 
+const read = async () => {
+
+    const read = await realStateRep.find({ relations: { address: true } })
+
+    
+    return read
+}
 
 
-export default { create }
+export default { create, read }

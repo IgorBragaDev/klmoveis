@@ -9,6 +9,7 @@ const realStateRoutes: Router = Router()
 
 
 realStateRoutes.post("", checkAdm, validate(realStateCreate), realStateController.create)
+realStateRoutes.get("", realStateController.read)
 
 
 

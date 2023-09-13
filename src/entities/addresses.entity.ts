@@ -5,19 +5,19 @@ export class Address {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
-    @Column({ length: 45, nullable: false })
+    @Column({ length: 45 })
     street: string;
 
-    @Column({ nullable: false, length: 8 })
+    @Column({  length: 8 })
     zipCode: string;
 
-    @Column({ nullable: false })
+    @Column({})
     number: number;
 
-    @Column({ nullable: false, length: 20 })
+    @Column({ length: 20 })
     city: string;
 
-    @Column({ nullable: false, length: 2 })
+    @Column({ length: 2 })
     state: string;
 
 

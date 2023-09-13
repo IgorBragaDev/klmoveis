@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import Addresses from "./addresses.entity";
 import Categories from "./category.entity";
+import { date } from "zod";
 
 @Entity("realEstates")
 export class RealEstate {
@@ -16,17 +17,18 @@ export class RealEstate {
     @Column({ nullable: false })
     size: number;
 
-    @CreateDateColumn({ nullable: false })
+    @CreateDateColumn({ type: "date", nullable: false })
     createdAt: Date;
 
-    @UpdateDateColumn({ nullable: false })
+    @UpdateDateColumn({ type: "date", nullable: false })
     updatedAt: Date;
 
+
+    @OneToOne(() => Addresses)
     @JoinColumn()
-    @OneToOne(() => Addresses, { nullable: false })
     address: Addresses
 
-    @ManyToOne(() => Categories, { nullable: false })
+    @ManyToOne(() => Categories)
     category: Categories
 
 

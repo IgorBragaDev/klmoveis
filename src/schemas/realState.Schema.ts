@@ -13,7 +13,7 @@ const realStateSchema = z.object({
     size: z.number().positive(),
     address: address,
     categoryId: z.number().int(),
-    sold: z.boolean().optional().default(false),
+    sold: z.boolean().default(false),
     createdAt: z.string(),
     updatedAt: z.string(),
 

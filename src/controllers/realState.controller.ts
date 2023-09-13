@@ -8,5 +8,12 @@ const create = async (req: Request, res: Response) => {
     return res.status(201).json(create)
 }
 
+const read = async (req: Request, res: Response) => {
 
-export default {create}
+    const read = await realStateService.read()
+
+    console.log(read)
+    res.status(200).json(read)
+}
+
+export default { create, read }
