@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import Addresses from "./addresses.entity";
 import Categories from "./category.entity";
 import { date } from "zod";
+import Schedule from "./schedules.entity";
 
 @Entity("realEstates")
 export class RealEstate {
@@ -31,6 +32,8 @@ export class RealEstate {
     @ManyToOne(() => Categories)
     category: Categories
 
+    @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
+    schedules: Schedule[]
 
 }
 

@@ -3,9 +3,17 @@ import schedulesService from "../services/schedules.service";
 
 const create = async (req: Request, res: Response) => {
 
-    const create = await schedulesService.create(req.body)
+    console.log(res.locals.decoded.sub)
+    const create = await schedulesService.create(req.body, res.locals.decoded.sub)
 
-    return res.status(201).json(create)
+    return res.status(201).json({ message: "Schedule created" })
 }
 
-export default { create }
+const read = async (req: Request, res: Response) => {
+
+    const read = await schedulesService.read(req.params.id)
+
+    return res.status(200).json(read)
+}
+
+export default { create, read }

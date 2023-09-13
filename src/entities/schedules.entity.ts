@@ -7,17 +7,17 @@ export class Schedule {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
-    @Column({ nullable: false })
-    date: Date;
+    @Column({ type: "date", nullable: false })
+    date: string;
 
-    @Column({ nullable: false })
-    hour: Date;
+    @Column({ type: "date", nullable: false })
+    hour: string;
 
     @ManyToOne(() => RealStates, { nullable: false })
     realEstate: RealStates
 
     @ManyToOne(() => Users, { nullable: false })
-    userId: Users
+    user: Users
 
 
 
