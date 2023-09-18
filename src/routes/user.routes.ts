@@ -5,6 +5,7 @@ import { userSchemaCreate, userUpdateSchema } from "../schemas/user.shema";
 import checkName from "../middlewares/checkName.middleware";
 import checkAdm from "../middlewares/checkAdm.middleware";
 import checkOnwerOrAdm from "../middlewares/checkOnwerOrAdm.middleware";
+import checkId from "../middlewares/checkId.middleware";
 
 
 const userRouter: Router = Router()
@@ -14,7 +15,7 @@ const userRouter: Router = Router()
 userRouter.post("", validate(userSchemaCreate), checkName, userController.create)
 userRouter.get("", checkAdm, userController.read)
 userRouter.patch("/:id", validate(userUpdateSchema), checkOnwerOrAdm, userController.patch)
-userRouter.delete("/:id", checkAdm, userController.destroy)
+userRouter.delete("/:id",checkAdm, userController.destroy)
 
 
 
